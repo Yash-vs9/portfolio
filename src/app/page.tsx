@@ -157,7 +157,21 @@ function Experience() {
             </div>
 
             {/* Main card */}
-            <div className="flex-1 glass border border-white/10 rounded-2xl p-6 card-hover">
+            <div className="flex-1 glass border border-white/10 rounded-2xl p-6 card-hover relative">
+              {/* Badge + company name top-right */}
+              {item.badge && (
+                <div className="absolute top-4 right-4 flex flex-col items-center">
+                  <img 
+                    src={item.badge} 
+                    alt={`${item.company} Badge`} 
+                    className="w-12 h-12 object-contain rounded-md"
+                  />
+                  <div className="text-white font-semibold text-xs mt-1 text-center">
+                    {item.company}
+                  </div>
+                </div>
+              )}
+
               {/* Role */}
               <div className="text-xl font-semibold text-white mb-4">{item.role}</div>
               
@@ -165,7 +179,7 @@ function Experience() {
               <div className="text-sm text-zinc-400 mb-4 font-medium">{item.period}</div>
               
               {/* Points */}
-              <ul className="space-y-2 mb-4">
+              <ul className="space-y-2">
                 {item.points.map((point, i) => (
                   <li key={i} className="flex items-start gap-3 text-zinc-300">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-400 mt-2 flex-shrink-0"></span>
@@ -173,20 +187,6 @@ function Experience() {
                   </li>
                 ))}
               </ul>
-
-              {/* Badge + company name */}
-              {item.badge && (
-                <div className="flex flex-col items-center mt-4">
-                  <img 
-                    src={item.badge} 
-                    alt={`${item.company} Badge`} 
-                    className="w-16 h-16 object-contain rounded-md"
-                  />
-                  <div className="text-white font-semibold text-sm mt-2 text-center">
-                    {item.company}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         ))}
@@ -194,7 +194,6 @@ function Experience() {
     </div>
   );
 }
-
 function Achievements() {
   const items = [
     { 
@@ -267,7 +266,7 @@ function Projects() {
     {
       name: "HealthCare AI",
       desc: "An intelligent healthcare platform where users can chat with AI doctors and discover nearby hospitals within their radius, featuring real-time location services and medical assistance.",
-      tags: ["React", "Node.js", "SQL", "AI/ML", "Maps API"],
+      tags: ["React", "Node.js", "SQL", "AI", "Maps API"],
       link: "https://github.com/Yash-vs9/Code-Seekers_AMUHACKS4.0",
       image: "./health.png",
       status: "GitHub"
