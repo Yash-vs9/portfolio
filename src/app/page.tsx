@@ -22,7 +22,7 @@ function Header() {
           <div className="flex items-center justify-between">
             <Link href="#" className="font-bold text-xl tracking-tight text-white group">
               <span className="bg-gradient-to-r from-brand-400 to-fuchsia-400 bg-clip-text text-transparent">
-                Yash
+                Yash Vardhan Shukla
               </span>
               <span className="ml-3 text-xs rounded-full px-3 py-1 bg-gradient-to-r from-brand-500/20 to-fuchsia-500/20 border border-brand-500/30 text-brand-300">
                 Portfolio
@@ -45,7 +45,7 @@ function Header() {
                 </Link>
               ))}
               <Link
-                href="mailto:yash@example.com"
+                href="mailto:lakkyshukla74339@gmail.com"
                 className="text-sm bg-gradient-to-r from-brand-500 to-fuchsia-500 hover:from-brand-400 hover:to-fuchsia-400 text-white rounded-xl px-6 py-2 shadow-glow transition-all duration-300 transform hover:scale-105"
               >
                 Contact
@@ -79,7 +79,7 @@ function Hero() {
                 digital experiences
               </h1>
               <p className="text-xl text-zinc-300 leading-relaxed max-w-2xl">
-                I'm Yash, a passionate software engineer crafting modern, scalable solutions with 
+                I'm Yash Vardhan Shukla, a passionate software engineer crafting modern, scalable solutions with 
                 <span className="text-brand-400 font-semibold"> Next.js</span>, 
                 <span className="text-fuchsia-400 font-semibold"> TypeScript</span>
                 <span className="text-brand-400 font-semibold"> React</span> and 
@@ -145,20 +145,27 @@ function Experience() {
   
   return (
     <div className="relative">
+      {/* Vertical line */}
       <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-500/60 via-fuchsia-500/40 to-transparent"></div>
+      
       <div className="space-y-8">
         {items.map((item, idx) => (
           <div key={idx} className="relative flex items-start gap-6 group">
+            {/* Icon / placeholder */}
             <div className="flex-shrink-0 w-16 h-16 rounded-2xl glass border border-white/10 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
               {item.icon}
             </div>
+
+            {/* Main card */}
             <div className="flex-1 glass border border-white/10 rounded-2xl p-6 card-hover">
-              <div className="flex flex-wrap items-baseline justify-between gap-3 mb-4">
-                <div className="text-xl font-semibold text-white">{item.role}</div>
-                <div className="text-brand-400 font-medium">{item.company}</div>
-              </div>
+              {/* Role */}
+              <div className="text-xl font-semibold text-white mb-4">{item.role}</div>
+              
+              {/* Period */}
               <div className="text-sm text-zinc-400 mb-4 font-medium">{item.period}</div>
-              <ul className="space-y-2">
+              
+              {/* Points */}
+              <ul className="space-y-2 mb-4">
                 {item.points.map((point, i) => (
                   <li key={i} className="flex items-start gap-3 text-zinc-300">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-400 mt-2 flex-shrink-0"></span>
@@ -167,9 +174,18 @@ function Experience() {
                 ))}
               </ul>
 
-              {/* Badge section */}
+              {/* Badge + company name */}
               {item.badge && (
-                <img src={item.badge} alt={`${item.company} Badge`} className="mt-3 w-18 h-16" />
+                <div className="flex flex-col items-center mt-4">
+                  <img 
+                    src={item.badge} 
+                    alt={`${item.company} Badge`} 
+                    className="w-16 h-16 object-contain rounded-md"
+                  />
+                  <div className="text-white font-semibold text-sm mt-2 text-center">
+                    {item.company}
+                  </div>
+                </div>
               )}
             </div>
           </div>
@@ -323,7 +339,66 @@ function Projects() {
     </div>
   );
 }
+function Contact() {
+  return (
+    <section id="contact" className="scroll-mt-24">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
+          Contact Me
+        </h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-brand-500 to-fuchsia-500 mx-auto rounded-full"></div>
+      </div>
 
+      <div className="max-w-3xl mx-auto glass rounded-2xl p-8 border border-white/10 shadow-2xl">
+        <p className="text-zinc-300 mb-6 text-center">
+          I'm always open to discussing new projects, freelance opportunities, or collaborations. 
+          Feel free to reach out using the form below or via email.
+        </p>
+
+        <form 
+          action="mailto:lakkyshukla74339@gmail.com" 
+          method="POST" 
+          className="flex flex-col gap-4"
+        >
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required
+            className="bg-zinc-900/50 text-white placeholder-zinc-400 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            required
+            className="bg-zinc-900/50 text-white placeholder-zinc-400 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500"
+          />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            rows={5}
+            required
+            className="bg-zinc-900/50 text-white placeholder-zinc-400 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500"
+          ></textarea>
+          <button
+            type="submit"
+            className="bg-gradient-to-r from-brand-500 to-fuchsia-500 text-white px-6 py-3 rounded-2xl shadow-glow hover:scale-105 transition-transform duration-300 font-semibold"
+          >
+            Send Message
+          </button>
+        </form>
+
+        <div className="mt-6 text-center text-zinc-400 text-sm">
+          Or reach me directly at:{" "}
+          <a href="mailto:lakkyshukla74339@gmail.com" className="text-brand-400 hover:text-fuchsia-400 transition-colors">
+            lakkyshukla74339@gmail.com
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
 function Footer() {
   return (
     <footer className="mx-auto max-w-6xl px-6 py-16 text-sm text-zinc-400">
@@ -400,6 +475,10 @@ export default function Page() {
           <Section id="projects" title="Featured Projects">
             <Projects />
           </Section>
+          <Section id="contact" title="">
+            <Contact />
+          </Section>
+
         </div>
       </main>
       <Footer />
