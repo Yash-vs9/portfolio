@@ -126,7 +126,8 @@ function Experience() {
         "Collaborated with senior engineers on model optimization",
         "Contributed to research projects in computer vision"
       ],
-      icon: ""
+      icon: "",
+      badge: "./edic.jpeg" // 🔗 replace with your badge link
     },
     {
       role: "Frontend Developer",
@@ -137,7 +138,8 @@ function Experience() {
         "Implemented modern UI/UX designs with Tailwind CSS",
         "Optimized application performance and user experience"
       ],
-      icon: ""
+      icon: "",
+      badge: "./vexel.png" // 🔗 replace with your badge link
     }
   ];
   
@@ -152,9 +154,7 @@ function Experience() {
             </div>
             <div className="flex-1 glass border border-white/10 rounded-2xl p-6 card-hover">
               <div className="flex flex-wrap items-baseline justify-between gap-3 mb-4">
-                <div className="text-xl font-semibold text-white">
-                  {item.role}
-                </div>
+                <div className="text-xl font-semibold text-white">{item.role}</div>
                 <div className="text-brand-400 font-medium">{item.company}</div>
               </div>
               <div className="text-sm text-zinc-400 mb-4 font-medium">{item.period}</div>
@@ -166,6 +166,11 @@ function Experience() {
                   </li>
                 ))}
               </ul>
+
+              {/* Badge section */}
+              {item.badge && (
+                <img src={item.badge} alt={`${item.company} Badge`} className="mt-3 w-18 h-16" />
+              )}
             </div>
           </div>
         ))}
@@ -180,31 +185,52 @@ function Achievements() {
       title: "LeetCode Expert", 
       detail: "Solved 100+ algorithmic problems with focus on data structures and algorithms",
       icon: "",
-      color: "from-yellow-500/20 to-orange-500/20"
+      color: "from-yellow-500/20 to-orange-500/20",
+      badge: "https://img.shields.io/badge/LeetCode-Expert-orange?style=flat&logo=leetcode"
     },
     { 
       title: "Hackathon Champion", 
       detail: "Rank 1 Position in Vanilla Web Hackathon - Built innovative web solutions",
       icon: "",
-      color: "from-brand-500/20 to-fuchsia-500/20"
+      color: "from-brand-500/20 to-fuchsia-500/20",
+      certificate: "https://drive.google.com/file/d/1Oe1nFQq_kCgDSAEcmJk6kvC8fHKMvCGS/view" // 🔗 replace with your actual certificate link
     },
     { 
       title: "Open Source Contributor", 
       detail: "Active contributor to various open source projects and community initiatives",
       icon: "",
-      color: "from-green-500/20 to-blue-500/20"
+      color: "from-green-500/20 to-blue-500/20",
+      badge: "https://img.shields.io/badge/Open%20Source-Contributor-brightgreen?style=flat&logo=github"
     }
   ];
   
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {items.map((a, i) => (
-        <div key={i} className="glass rounded-2xl p-6 border border-white/10 card-hover group relative overflow-hidden">
+        <div 
+          key={i} 
+          className="glass rounded-2xl p-6 border border-white/10 card-hover group relative overflow-hidden"
+        >
           <div className={`absolute inset-0 bg-gradient-to-br ${a.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
           <div className="relative z-10">
             <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">{a.icon}</div>
             <div className="text-lg font-semibold text-white mb-2">{a.title}</div>
-            <div className="text-zinc-400 text-sm leading-relaxed">{a.detail}</div>
+            <div className="text-zinc-400 text-sm leading-relaxed mb-3">{a.detail}</div>
+
+            {/* Extra options */}
+            {a.badge && (
+              <img src={a.badge} alt={`${a.title} Badge`} className="mt-2" />
+            )}
+            {a.certificate && (
+              <a 
+                href={a.certificate} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block mt-3 text-xs px-4 py-2 bg-gradient-to-r from-brand-500 to-fuchsia-500 text-white rounded-lg shadow-glow hover:scale-105 transition-transform duration-300"
+              >
+                View Certificate
+              </a>
+            )}
           </div>
         </div>
       ))}
@@ -219,7 +245,7 @@ function Projects() {
       desc: "A comprehensive full-stack productivity and consistency tracking platform designed to help users build habits, track progress, and stay accountable with beautiful analytics and goal management.",
       tags: ["Next.js", "TypeScript", "Spring Boot", "Supabase", "Tailwind"],
       link: "https://consistify2.vercel.app/",
-      image: "",
+      image: "./consistify.png", // 🔗 replace with project image
       status: "Live"
     },
     {
@@ -227,9 +253,26 @@ function Projects() {
       desc: "An intelligent healthcare platform where users can chat with AI doctors and discover nearby hospitals within their radius, featuring real-time location services and medical assistance.",
       tags: ["React", "Node.js", "SQL", "AI/ML", "Maps API"],
       link: "https://github.com/Yash-vs9/Code-Seekers_AMUHACKS4.0",
-      image: "",
+      image: "./health.png",
       status: "GitHub"
-    }
+    },
+    {
+      name: "Cyber Guardian",
+      desc: "A gamified cybersecurity awareness platform built for hackathon constraints, designed to educate users about cybersecurity through interactive games, simulations, and hands-on learning experiences.",
+      tags: ["HTML", "CSS", "JS"],
+      link: "https://yash-vs9.github.io/Team-ZAVA-VANILLAWEBHACKS-/html/LandingPage.html",
+      image: "./cyber.png",
+      status: "Live"
+    },
+    {
+      name: "CLI Tool",
+      desc: "An AI-powered developer CLI assistant that simplifies your workflow. It integrates with OpenAI, helps generate commit messages, scans dependencies, tracks active time, analyzes API responses, and more — all directly from your terminal. Written in Python in just 250 Lines.",
+      tags: ["Python"],
+      link: "https://github.com/Yash-vs9/flowCLI",
+      image: "./cli.png",
+      status: "GitHub"
+    },
+    
   ];
   
   return (
@@ -244,8 +287,19 @@ function Projects() {
         >
           <div className="absolute inset-0 bg-gradient-to-br from-brand-500/5 to-fuchsia-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div className="relative z-10">
+            {/* Image preview */}
+            {p.image && (
+              <img 
+                src={p.image} 
+                alt={p.name} 
+                className="w-full h-40 object-cover rounded-xl mb-4 border border-white/10 group-hover:scale-105 transition-transform duration-500"
+              />
+            )}
+            
             <div className="flex items-start justify-between gap-4 mb-4">
-              <div className="text-4xl group-hover:scale-110 transition-transform duration-300">{p.image}</div>
+              <div className="text-2xl font-bold text-white group-hover:text-brand-300 transition-colors duration-300">
+                {p.name}
+              </div>
               <span className={`text-xs px-3 py-1 rounded-full border ${
                 p.status === 'Live' 
                   ? 'bg-green-500/20 border-green-500/30 text-green-300' 
@@ -254,9 +308,7 @@ function Projects() {
                 {p.status}
               </span>
             </div>
-            <div className="text-2xl font-bold text-white mb-3 group-hover:text-brand-300 transition-colors duration-300">
-              {p.name}
-            </div>
+            
             <p className="text-zinc-300 leading-relaxed mb-6">{p.desc}</p>
             <div className="flex flex-wrap gap-2">
               {p.tags.map((tag) => (
@@ -264,12 +316,6 @@ function Projects() {
                   {tag}
                 </span>
               ))}
-            </div>
-            <div className="mt-6 flex items-center text-brand-400 text-sm font-medium group-hover:text-brand-300 transition-colors duration-300">
-              <span>View Project</span>
-              <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
             </div>
           </div>
         </a>
